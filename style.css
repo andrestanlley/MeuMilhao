@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+*{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: #F1ECE9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.insert{
+    color: #FFFDF5;
+    background-color: #019EB1;
+    border-radius: 6px;
+    box-shadow: 2px 5px 3px #3ea3b16c;
+    padding: 3rem;
+    width: 25rem;
+}
+
+header img{
+    width: 100%;
+}
+
+.financeiro{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    color: rgb(90, 90, 90);
+    border-radius: 8px;
+    height: 3rem;
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+input::placeholder{
+    font-size: 1.7rem;
+    color: rgba(37, 37, 37, 0.247);
+}
+
+input:focus{
+    border-color: chocolate;
+}
+
+h4{
+    font-size: .8rem;
+    color: rgb(231, 231, 231);
+    font-weight: 400;
+    line-height: 0;
+    position: relative;
+}
+
+p{
+    margin-bottom: .3rem;
+}
+
+#renda{
+    margin-bottom: 1.5rem;
+}
+
+
+.underline1{
+    background: #0a799b;
+    height: .5rem;
+    width: 12.5rem;
+}
+
+.underline2{
+    background: #0a799b;
+    height: .5rem;
+    width: 13.5rem;
+}
+
+
+#juros{
+    margin-bottom: .8rem;
+}
+
+button{
+    display: flex;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    color: white;
+    background: #f5df4e;
+    width: 100%;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0px 3px 1px #d4ba0f;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeuMilhão - v1.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="insert">
+        <header>
+            <img src="src/logo.png" alt="">
+        </header>
+        <div class="financeiro">
+            Qual sua renda mensal?
+            <input type="text" id="renda" name="renda" placeholder="renda mensal" onkeyup="renda()">
+            <p>Posso investir <strong id="valor">50</strong>% mensalmente</p>
+            <h4>
+                altere conforme sua realidade.
+                <div class="underline1"></div>
+            </h4>
+            <input type="range" name="investimento" id="investimento" onchange="calc()" min="5" max="100" step="5" list="tick">              
+            <datalist id="tick">
+                <option value="5">
+                <option value="10">
+                <option value="15">
+                <option value="20">
+                <option value="25">
+                <option value="30">
+                <option value="35">
+                <option value="40">
+                <option value="45">
+                <option value="50">
+                <option value="55">
+                <option value="60">
+                <option value="65">
+                <option value="70">
+                <option value="75">
+                <option value="80">
+                <option value="85">
+                <option value="90">
+                <option value="95">
+                <option value="100">
+                </datalist>
+            Taxa de juros anual
+            <input type="text" id="juros" name="juros" placeholder="2.65%">
+            <h4>
+                Deixe em branco caso não saiba.
+                <div class="underline2"></div>
+                <button type="submit">calcular</button>
+            </h4>
+        </div>
+    </div>
+</body>
+<script>
+    function renda(){
+        var renda = document.getElementById('renda')
+        var convert = Number(renda.value).toLocaleString("pt-BR", {style: 'currency', currency: 'BRL'})
+        renda.value = convert
+    }
+    var porcentagem = document.getElementById('investimento')
+    porcentagem.value = "30"
+    var valor = document.getElementById('valor')
+    valor.innerText = porcentagem.value
+    function calc(){
+        valor.innerText = porcentagem.value
+    }
+</script>
+</html>
