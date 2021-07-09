@@ -16,19 +16,11 @@
         <div class="financeiro">
             Qual sua renda mensal?
             <input type="text" id="renda" name="renda" placeholder="renda mensal" onkeyup="renda()">
-            <p>Posso investir <strong id="valor">50</strong>% mensalmente</p>
-            <h4>
-                altere conforme sua realidade.
-                <div class="underline1"></div>
-            </h4>
+            <p>Posso investir <strong id="valor">50</strong>% mensalmente<br><mark>Altere conforme sua realidade.</mark></p>
             <input type="range" name="investimento" id="investimento" onchange="calc()" min="5" max="100" step="5">              
-            Taxa de juros anual
+            <p>Taxa de juros anual<br><mark>Deixe em branco caso não saiba.</mark></p>
             <input type="text" id="juros" name="juros" placeholder="2.65%">
-            <h4>
-                Deixe em branco caso não saiba.
-                <div class="underline2"></div>
-                <button type="submit">calcular</button>
-            </h4>
+            <button type="submit">calcular</button>
         </div>
     </div>
 </body>
@@ -39,7 +31,7 @@
         renda.value = convert
     }
     var porcentagem = document.getElementById('investimento')
-    porcentagem.value = "30"
+    porcentagem.value = "20"
     var valor = document.getElementById('valor')
     valor.innerText = porcentagem.value
     function calc(){
