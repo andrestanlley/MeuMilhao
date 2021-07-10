@@ -15,9 +15,10 @@
         </header>
         <div class="financeiro">
             Qual sua renda mensal?
-            <input type="text" id="renda" name="renda" placeholder="renda mensal" onkeyup="renda()">
-            <p>Posso investir <strong id="valor">50</strong>% mensalmente<br><mark>Altere conforme sua realidade.</mark></p>
-            <input type="range" name="investimento" id="investimento" onchange="calc()" min="5" max="100" step="5">              
+            <input type="text" id="renda" name="renda" placeholder="renda mensal" onkeyup="valorrenda()">
+            <p>Posso investir <strong id="valor">50</strong>% mensalmente.<br><mark>Altere conforme sua realidade.</mark></p>
+            <input type="range" name="investimento" id="investimento" onchange="porcentagem2()" min="5" max="100" step="5">
+            <p id="corresponde"></p>              
             <p>Taxa de juros anual<br><mark>Deixe em branco caso não saiba.</mark></p>
             <input type="text" id="juros" name="juros" placeholder="2.65%">
             <button type="submit">calcular</button>
@@ -25,17 +26,25 @@
     </div>
 </body>
 <script>
-    function renda(){
-        var renda = document.getElementById('renda')
-        var convert = Number(renda.value).toLocaleString("pt-BR", {style: 'currency', currency: 'BRL'})
-        renda.value = convert
-    }
+    var renda = document.getElementById('renda')
     var porcentagem = document.getElementById('investimento')
     porcentagem.value = "20"
     var valor = document.getElementById('valor')
     valor.innerText = porcentagem.value
-    function calc(){
-        valor.innerText = porcentagem.value
+    
+
+    function valorrenda(){ // Insere o R$ e retorna o valor
+        var convert = renda.value.replace('R$ ','').replace(',','.')
+        renda.value = `R$ ${convert.replace('.',',')}`
+        porcentagem2()
     }
+
+    function porcentagem2(){
+        valor.innerText = porcentagem.value
+        var corresponde = document.getElementById('corresponde')
+        var rendaformatado = renda.value.replace('R$ ','').replace(',','.')
+        corresponde.innerText = `R$ ${rendaformatado*porcentagem.value/100} - ${porcentagem.value}%`
+    }
+
 </script>
 </html>

@@ -52,7 +52,7 @@ input::placeholder{
 }
 
 input:focus{
-    border-color: chocolate;
+    outline: 0;
 }
 
 mark{
