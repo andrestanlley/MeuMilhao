@@ -19,8 +19,9 @@
             <p>Posso investir <strong id="valor">50</strong>% mensalmente.<br><mark>Altere conforme sua realidade.</mark></p>
             <input type="range" name="investimento" id="investimento" onchange="porcentagem2()" min="5" max="100" step="5">
             <p id="corresponde"></p>              
-            <p>Taxa de juros anual<br><mark>Deixe em branco caso não saiba.</mark></p>
+            <p>Taxa de juros anual</p>
             <input type="text" id="juros" name="juros" placeholder="2.65%">
+            <p><mark>Deixe em branco caso não saiba.</mark></p>
             <button type="submit">calcular</button>
         </div>
     </div>
@@ -43,7 +44,7 @@
         valor.innerText = porcentagem.value
         var corresponde = document.getElementById('corresponde')
         var rendaformatado = renda.value.replace('R$ ','').replace(',','.')
-        corresponde.innerText = `R$ ${rendaformatado*porcentagem.value/100} - ${porcentagem.value}%`
+        corresponde.innerText = `R$ ${Number(rendaformatado*porcentagem.value/100).toFixed()} - ${porcentagem.value}%`
     }
 
 </script>
