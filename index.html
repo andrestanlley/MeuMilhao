@@ -26,26 +26,5 @@
         </div>
     </div>
 </body>
-<script>
-    var renda = document.getElementById('renda')
-    var porcentagem = document.getElementById('investimento')
-    porcentagem.value = "20"
-    var valor = document.getElementById('valor')
-    valor.innerText = porcentagem.value
-    
-
-    function valorrenda(){ // Insere o R$ e retorna o valor
-        var convert = renda.value.replace('R$ ','').replace(',','.')
-        renda.value = `R$ ${convert.replace('.',',')}`
-        porcentagem2()
-    }
-
-    function porcentagem2(){
-        valor.innerText = porcentagem.value
-        var corresponde = document.getElementById('corresponde')
-        var rendaformatado = renda.value.replace('R$ ','').replace(',','.')
-        corresponde.innerText = `R$ ${Number(rendaformatado*porcentagem.value/100).toFixed()} - ${porcentagem.value}%`
-    }
-
-</script>
+<script src="funcoes.js"></script>
 </html>
