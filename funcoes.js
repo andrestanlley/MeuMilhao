@@ -31,12 +31,14 @@ function porcentagem2(){
 function calcular(){
     var fortuna = 0
     var meses = 0
-    juros = juros.value/12
-    var valormensal = Number((backuprenda*porcentagem.value/100).toFixed())
-    do {
+    juros = (juros.value/12).toFixed(1)
+    var valormensal = backuprenda*porcentagem.value/100
+    while((fortuna >= 1000000 && meses%12!=0) || fortuna <= 1000000){
         fortuna += fortuna*juros/100
         fortuna += valormensal
-        meses += 1
-    } while (fortuna <= 1000000 && meses%12 != 0)
-    alert(`São necessarios ${meses/12} anos para se obter ${fortuna.toFixed()}`)
+        fortuna = Number.parseFloat(fortuna)
+        meses ++
+        console.log(`Mês ${meses} - R$ ${fortuna}`)
+    } 
+    alert(`São necessarios ${meses/12} anos para se obter ${fortuna.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
 }
