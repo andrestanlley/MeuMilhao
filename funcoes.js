@@ -33,10 +33,10 @@ function calcular(){
     var meses = 0
     juros = juros.value/12
     var valormensal = Number((backuprenda*porcentagem.value/100).toFixed())
-    while (fortuna <= 1000000){
+    do {
         fortuna += fortuna*juros/100
         fortuna += valormensal
         meses += 1
-    }
-    alert(`São necessarios ${(meses/12).toFixed()} anos para se obter ${fortuna}`)
+    } while (fortuna <= 1000000 && meses%12 != 0)
+    alert(`São necessarios ${meses/12} anos para se obter ${fortuna.toFixed()}`)
 }
