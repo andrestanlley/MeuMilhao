@@ -39,8 +39,8 @@ function jurosc(){
     if (juros.value == ''){
         juros.value = 6
     }
-    jurosnum = juros.value.replaceAll('%','')
-    juros.value = jurosnum+'%'
+    jurosnum = juros.value.replaceAll('%','').replace(',','.')
+    juros.value = jurosnum.replace('.',',')+'%'
     jurosmensal = Number(jurosnum/12)
 }
 
