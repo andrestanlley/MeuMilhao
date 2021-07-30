@@ -1,38 +1,32 @@
 var renda = document.getElementById('renda')
-var porcentagem = document.getElementById('investimento')
 var valor = document.getElementById('valor')
 var juros = document.getElementById('juros')
 var corresponde = document.getElementById('corresponde')
-var rendaformatado = 0
-var jurosmensal = 0
-porcentagem.value = "20"
-var rendanumerica = 0
-var tamanho = 0
+var porcentagem = document.getElementById('investimento')
+var jurosmensal = 0, valormensal = 0, fortuna = 0, meses = 0
+porcentagem.value = 20
 
 function calcporcento(valor,porcentagem){
-    let vvar = Number((valor*porcentagem/100).toFixed())
+    let vvar = Number((valor*porcentagem/100).toFixed(2))
     return vvar
 }
 
-
-function valorrenda(){ // Insere o R$ e retorna o valor
-    var convert = renda.value.replace('R$ ','').replace(',','.')
-    renda.value = `R$ ${convert.replace('.',',')}`
+function vrenda(){ // Insere o R$ e retorna o valor
+    rendanum = renda.value.replaceAll(',','.').replaceAll('R$ ','')
+    renda.value = 'R$ '+rendanum.replaceAll('.',',')
+    renda.value == 'R$ '?renda.value = '':console.log('renda informada!')
     correspondente()
 }
 
 function correspondente(){
     valor.innerText = porcentagem.value
-    rendaformatado = renda.value.replace('R$ ','').replace(',','.')
-    rendanumerica = rendaformatado
-    rendaformatado = calcporcento(rendaformatado,porcentagem.value)
-    if (rendaformatado == 'NaN') {
-        tamanho = rendanumerica.length
-        renda.value = `R$ ${rendanumerica.replace(rendanumerica[tamanho-1],'')}`
-    } else {
-        corresponde.innerText = `R$ ${rendaformatado} - ${porcentagem.value}%`
+    valormensal = calcporcento(rendanum,porcentagem.value)
+    if (isNaN(valormensal)){
+        alert('Você informou um valor incorreto! Tente novamente.')
+        renda.value = ''
+        valormensal = 0
     }
-    return rendaformatado
+    corresponde.innerText = `R$ ${valormensal} - ${porcentagem.value}%`
 }
 
 function jurosc(){
@@ -41,17 +35,14 @@ function jurosc(){
     }
     jurosnum = juros.value.replaceAll('%','').replace(',','.')
     juros.value = jurosnum.replace('.',',')+'%'
-    jurosmensal = Number(jurosnum/12)
+    jurosmensal = Number(jurosnum/12).toFixed(2)
 }
 
 function calcular(){
-    if (renda.value == ''){
+    if (rendanum == ''){
         alert('Você não informou a sua renda mensal!')
     } else {
         jurosc()
-        let valormensal = correspondente()
-        let fortuna = 0
-        let meses = 0
         while((fortuna >= 1000000 && meses%12!=0) || fortuna <= 1000000){
             fortuna += calcporcento(fortuna,jurosmensal)
             fortuna += valormensal
