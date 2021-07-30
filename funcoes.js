@@ -3,7 +3,7 @@ var valor = document.getElementById('valor')
 var juros = document.getElementById('juros')
 var corresponde = document.getElementById('corresponde')
 var porcentagem = document.getElementById('investimento')
-var jurosmensal = 0, valormensal = 0, fortuna = 0, meses = 0
+var valormensal = 0, jurosmensal = 0
 porcentagem.value = 20
 
 function calcporcento(valor,porcentagem){
@@ -31,11 +31,11 @@ function correspondente(){
 
 function jurosc(){
     if (juros.value == ''){
-        juros.value = 6
+        juros.value = 4.25
     }
     jurosnum = juros.value.replaceAll('%','').replace(',','.')
     juros.value = jurosnum.replace('.',',')+'%'
-    jurosmensal = Number(jurosnum/12).toFixed(2)
+    jurosmensal = Number.parseFloat(jurosnum/12)
 }
 
 function calcular(){
@@ -43,11 +43,14 @@ function calcular(){
         alert('Você não informou a sua renda mensal!')
     } else {
         jurosc()
+        let fortuna = valormensal
+        let meses = 1
         while((fortuna >= 1000000 && meses%12!=0) || fortuna <= 1000000){
+            meses++
+            console.log(`Mês ${meses} - R$ ${fortuna}`)
             fortuna += calcporcento(fortuna,jurosmensal)
             fortuna += valormensal
-            fortuna = Number.parseFloat(fortuna)
-            meses++
+            fortuna = Number.parseFloat(fortuna.toFixed(2))
         } 
         alert(`São necessarios ${meses/12} anos para se obter ${fortuna.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
     }
